@@ -1,0 +1,123 @@
+<#macro myLayout title="Layout example">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    
+    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+
+<style>
+
+h1{
+ text-align:center;}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+</head>
+<body ng-app="mainApp" >
+
+    <div data-ng-controller="CRUDController">
+
+        <div class="page-header">
+       <h1> BOOK MANAGEMENT FOR RETAILER </h1>
+
+        </div>
+
+        <form name="myform">
+
+    <table class="table table-hover">
+        <thead  class="thead-inverse">
+
+                <th>BookId</th>
+                <th>BookName</th>
+                <th>Price</th>
+                <th>Bookedition</th>
+                <th>BookAuthorid</th>
+                <th>Availableunits</th>
+                <th></th>
+                <th></th>
+            </thead>
+            <tr data-ng-repeat="Book in BookList" >
+
+               <td>{{ Book.Isbn }}</td>
+               <td>
+               <div ng-hide="editingData[Book.Isbn]">{{ Book.Name }}</div>
+               <div ng-show="editingData[Book.Isbn]"><input type="text" ng-model="Book.Name" required /></div>
+               </td>
+               <td>
+               <div ng-hide="editingData[Book.Isbn]">{{ Book.Price }}</div>
+               <div ng-show="editingData[Book.Isbn]"><input type="text" ng-model="Book.Price" required/></div>
+               </td>
+               <td>
+               <div ng-hide="editingData[Book.Isbn]">{{ Book.Edition }}</div>
+               <div ng-show="editingData[Book.Isbn]"><input type="text" ng-model="Book.Edition" required/></div>
+               </td>
+               <td>
+               <div ng-hide="editingData[Book.Isbn]">{{ Book.Author }}</div>
+               <div ng-show="editingData[Book.Isbn]"><input type="text" ng-model="Book.Author" required/></div>
+               </td>
+               <td>
+               <div ng-hide="editingData[Book.Isbn]">{{ Book.Availableunits }}</div>
+               <div ng-show="editingData[Book.Isbn]"><input type="text" ng-model="Book.Availableunits" required/></div>
+               </td>
+               <td>
+               <input ng-hide="editingData[Book.Isbn]" type="button" class="btn btn-success" ng-click="modify(Book)" value="UPDATE">
+               <input ng-show="editingData[Book.Isbn]" type ="button" class="btn btn-success" ng-click="update(Book)" value="SAVE">
+               </td>
+               <td>
+               <button type="button" class="btn btn-success" value="Delete" data-ng-click="DeleteData(Book)" />Delete</button>
+               </td>
+               </tr>
+
+               <tr>
+               <td>{{total+1}}
+               </td>
+
+                <td>
+                    <input type="text"  name="Bookname" data-ng-model="Model.Name" ng-pattern="/^[a-zA-Z0-9]*$/" required /></td>
+
+                <td>
+                    <input type="number"   name="price" data-ng-model="Model.Price" required /></td>
+                 <td>
+                    <input type="text"  name="Edition "data-ng-model="Model.Edition"  required/></td>
+                  <td>
+                    <input type="text" name=" authorid" data-ng-model="Model.Author"  required/></td>
+                  <td>
+                    <input type="text"  name="available_units" data-ng-model="Model.Availableunits"  required/></td>
+                   <td>
+                    <button type="button"  class="btn btn-success"  value="Save Data" ng-disabled="!myform.$valid" data-ng-click="AddData(Model)" />ADD</button></td>
+                    <td>
+                    </td>
+                   </tr>
+
+              </table>
+        </form>
+    </div>
+     <script src="assets/javascript/yahanPeService1.js" charset="utf-8"></script>
+    <script src="assets/javascript/controller1.js" charset="utf-8"></script>
+    
+
+
+</body>
+</html>
+</#macro>

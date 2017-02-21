@@ -1,0 +1,5 @@
+controllers\ApplicationController.class
+entity\Book.class
+controllers\ApplicationController$SimplePojo.class
+conf\Module.class
+conf\Routes.class

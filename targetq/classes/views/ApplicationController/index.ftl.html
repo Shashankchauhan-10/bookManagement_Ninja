@@ -1,0 +1,47 @@
+<#import "Book.ftl.html" as layout> 
+<@layout.myLayout "Home page">    
+
+
+<h1>${i18n("hello.world")}</h1>
+<p>${i18n("hello.world.json")}</p>
+<a href="/hello_world.json">User world</a>
+<a href="/Book">Book</a>
+
+
+
+
+
+<form action="/Useradd" method="POST">
+  
+    <table class="table table-hover">
+    <thead>
+    <tr>
+    <th>USERID</th>
+    <th>USERNAME</th>
+    <th>USERDATA</th>
+    <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><input type="text" name="Userid" />
+     </td>
+
+    <td><input type="text" name="Username" />
+    </td>
+
+    <td><input type="text" name="Userdata" /> 
+
+    </td>
+      <td>
+        <button type="submit">Add</button>
+      </td>
+    </tr>
+    </tbody>
+    </table>
+</form>
+
+
+
+
+</@layout.myLayout>
